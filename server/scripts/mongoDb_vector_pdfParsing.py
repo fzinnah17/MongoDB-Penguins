@@ -53,16 +53,16 @@ else:
     print("Connection to MongoDB Atlas Failed")
 
 # intialize a vector search object for the MongoDB atlas with the MongoDB client
-store = MongoDBAtlasVectorSearch(mongodb_client, db_name="test-database", collection_name="uber_docs", index_name="default")
+store = MongoDBAtlasVectorSearch(mongodb_client, db_name="test-database", collection_name="ayan_docs", index_name="default")
 storage_context = StorageContext.from_defaults(vector_store=store)
-uber_docs = SimpleDirectoryReader("/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/Ayan/").load_data()
+ayan_docs = SimpleDirectoryReader("/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/Ayan/").load_data()
 
 # check the raw data that was loaded
 #print("Loaded Uber Docs:")
 #print(uber_docs)  --> uncomment this if you want to see the raw data that was loaded
 
 index = VectorStoreIndex.from_documents(
-    uber_docs, storage_context=storage_context
+    ayan_docs, storage_context=storage_context
 )
 
 # print a confirmation message to indicate that the data has been indexed
