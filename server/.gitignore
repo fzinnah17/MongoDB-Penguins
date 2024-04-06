@@ -4,3 +4,4 @@ yarn.lock
 mongodb/
 ayan-env
 mongodb-osx-x86_64-3.0.15/
+mongod.lock
