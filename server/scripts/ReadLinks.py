@@ -49,6 +49,17 @@ specific_repo3 = "https://github.com/DeveloperMindset123/FlixterPlus"
 specific_repo4 = "https://github.com/DeveloperMindset123/Scholarly-Llama"
 specific_repo5 = "https://github.com/DeveloperMindset123/mapillary-python-sdk"
 
+# the following are links relevant to about us 
+googleAboutUs = "https://about.google"
+microsoftAboutUs = "https://www.microsoft.com/en-us/about"
+trunkToolsAboutUs = "https://trunktools.com"
+mongoDBAboutUs = "https://www.mongodb.com/company"
+nomicAboutUs = "https://www.nomic.ai"
+etsyAboutUs = "https://www.etsy.com/about"
+appleAboutUs = "https://www.apple.com"
+americanExpressAboutUs = "https://www.americanexpress.com/en-us/company/who-we-are/"
+chaseAboutUs = "https://www.chase.com/digital/resources/about-chase"
+
 #downloaded_url1 = fetch_url(url1)
 #downloaded is None  # assuming the download was successful
 #False
@@ -217,10 +228,161 @@ print("\nNode 8 for Specific Repo:")
 print(node8)
 
 
+print("The following are HTML extracted content for various companies:")
+
+# The following are links to parse through the About me section for the companies
+googleRequest = requests.get(googleAboutUs)
+print(googleRequest.status_code)
+google_html = googleRequest.content
+print(google_html)
+
+#save the resulting out
+with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/googleAboutUs.html', 'wb+') as f:
+    f.write(googleRequest.content)
+
+# make sure the filename for html matches what the html file was saved as
+google_html_extracted = FlatReader().load_data(Path("../Data/html/googleAboutUs.html"))
+googleNode = parser.get_nodes_from_documents(google_html_extracted)
+print("Google Node")
+print(googleNode)
+
+
+microsoftRequest = requests.get(microsoftAboutUs)
+print(microsoftRequest.status_code)
+microsoft_html = microsoftRequest.content
+print("Extracted Microsoft HTML:")
+print(microsoft_html)
+
+#save the resulting out
+with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/microsoftAboutUs.html', 'wb+') as f:
+    f.write(microsoftRequest.content)
+
+# make sure the filename for html matches what the html file was saved as
+microsoft_html_extracted = FlatReader().load_data(Path("../Data/html/microsoftAboutUs.html"))
+microsoftNode = parser.get_nodes_from_documents(microsoft_html_extracted)
+print("\n\nResulting Microsoft Nodes:")
+print(microsoftNode)
+
+
+
+trunkToolsRequest = requests.get(trunkToolsAboutUs)
+print(trunkToolsRequest.status_code)
+trunkTools_html = trunkToolsRequest.content
+print("Extracted TrunkTools HTML:")
+print(trunkTools_html)
+
+#save the resulting out
+with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/trunkToolsAboutUs.html', 'wb+') as f:
+    f.write(trunkToolsRequest.content)
+
+# make sure the filename for html matches what the html file was saved as
+trunkTools_html_extracted = FlatReader().load_data(Path("../Data/html/trunkToolsAboutUs.html"))
+trunkToolsNode = parser.get_nodes_from_documents(trunkTools_html_extracted)
+print("\n\nResulting Trunk Tools Nodes:")
+print(trunkToolsNode)
+
+
+
+mongodbRequest = requests.get(trunkToolsAboutUs)
+print(mongodbRequest.status_code)
+mongodbRequest_html = mongodbRequest.content
+print("Extracted mongoDB HTML:")
+print(mongodbRequest_html)
+
+#save the resulting out
+with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/mongodbAboutUs.html', 'wb+') as f:
+    f.write(mongodbRequest.content)
+
+# make sure the filename for html matches what the html file was saved as
+mongodb_html_extracted = FlatReader().load_data(Path("../Data/html/mongodbAboutUs.html"))
+mongodb_Node = parser.get_nodes_from_documents(mongodb_html_extracted)
+print("\n\nResulting Mongo DB Nodes:")
+print(mongodb_Node)
+
+
+nomicRequest = requests.get(nomicAboutUs)
+print(nomicRequest.status_code)
+nomic_Request_html = nomicRequest.content
+print("Extracted Nomic HTML:")
+print(nomic_Request_html)
+
+#save the resulting out
+with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/nomicAboutUs.html', 'wb+') as f:
+    f.write(nomicRequest.content)
+
+# make sure the filename for html matches what the html file was saved as
+nomic_html_extracted = FlatReader().load_data(Path("../Data/html/nomicAboutUs.html"))
+nomic_Node = parser.get_nodes_from_documents(nomic_html_extracted)
+print("\n\nResulting Trunk Tools Nodes:")
+print(nomic_Node)
+
+
+
+etsyRequest = requests.get(etsyAboutUs)
+print(etsyRequest.status_code)
+etsy_Request_html = etsyRequest.content
+print("Extracted Etsy HTML:")
+print(etsy_Request_html)
+
+#save the resulting out
+with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/etsyAboutUs.html', 'wb+') as f:
+    f.write(etsyRequest.content)
+
+# make sure the filename for html matches what the html file was saved as
+etsy_html_extracted = FlatReader().load_data(Path("../Data/html/etsyAboutUs.html"))
+etsy_Node = parser.get_nodes_from_documents(etsy_html_extracted)
+print("\n\nResulting Etsy Nodes:")
+print(etsy_Node)
+
+
+appleRequest = requests.get(appleAboutUs)
+print(appleRequest)
+apple_request_html = appleRequest.content
+print("Extracted Apple HTML:")
+print(apple_request_html)
+
+with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/appleAboutUs.html', 'wb+') as f:
+    f.write(appleRequest.content)
+
+apple_html_extracted = FlatReader().load_data(Path("../Data/html/appleAboutUs.html"))
+apple_Node = parser.get_nodes_from_documents(apple_html_extracted)
+print("\n\nResulting Apple Nodes:")
+print(apple_Node)
+
+
+
+americanExpressRequest = requests.get(americanExpressAboutUs)
+print(americanExpressRequest)
+americanExpress_request_html = americanExpressRequest.content
+print("Extracted American HTML:")
+print(americanExpress_request_html)
+
+with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/americanExpressAboutUs.html', 'wb+') as f:
+    f.write(americanExpressRequest.content)
+
+americanExpress_html_extracted = FlatReader().load_data(Path("../Data/html/americanExpressAboutUs.html"))
+americanExpress_Node = parser.get_nodes_from_documents(americanExpress_html_extracted)
+print("\n\nResulting American Express Nodes:")
+print(americanExpress_Node)
+
+chaseRequest = requests.get(chaseAboutUs)
+print(chaseRequest)
+chase_request_html = chaseRequest.content
+print("Extracted Chase HTML:")
+print(chase_request_html)
+
+with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/chaseAboutUs.html', 'wb+') as f:
+    f.write(americanExpressRequest.content)
+
+chase_html_extracted = FlatReader().load_data(Path("../Data/html/chaseAboutUs.html"))
+chase_Node = parser.get_nodes_from_documents(chase_html_extracted)
+print("\n\nResulting Chase Nodes:")
+print(chase_Node)
 
 
 
 
+#next request
 '''
 parser = HTMLNodeParser()  # optional list of tags
 nodes = parser.get_nodes_from_documents(extracted_html)

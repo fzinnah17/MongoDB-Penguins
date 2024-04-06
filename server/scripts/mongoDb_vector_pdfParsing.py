@@ -13,7 +13,7 @@ from llama_index.embeddings.openai import OpenAIEmbedding
 from llama_index.core.embeddings import resolve_embed_model
 from llama_index.llms.ollama import Ollama
 from dotenv import load_dotenv
-from ReadLinks import nodes  # import the html nodes so we can read them
+from ReadLinks import node0, node1, node2, node3, node4, node5, node6, node7, node8, googleNode, apple_Node, microsoftNode, trunkToolsNode, mongodb_Node, nomic_Node, etsy_Node, americanExpress_Node, chase_Node  # import the html nodes so we can read them
 import os
 
 
@@ -67,6 +67,87 @@ index = VectorStoreIndex.from_documents(
     ayan_docs, storage_context=storage_context
 )
 
+#define the index_struct
+index_struct = { 
+    "text" : "<Node Text Content>",
+    "embedding " : ["<numerical array embeddings>"],
+}
+
+print("Individual Nodes:")
+nodes = [node0, node1, node2, node3, node4, node5, node6, node7, node8, googleNode, apple_Node, microsoftNode, trunkToolsNode, mongodb_Node, nomic_Node, etsy_Node, americanExpress_Node, chase_Node]
+
+
+for i, node in enumerate(nodes):
+    print(f"Node {i} is of type {type(node)}")
+
+mongo_index = VectorStoreIndex.from_vector_store(
+    vector_store=store
+)
+
+# last attempt at insering nodes
+db = mongodb_client['test-database']
+collection = db['ayan_docs']
+
+# Convert your nodes to dictionaries
+#nodes_dict = [node.__dir__ for node in nodes]
+
+# Convert your nodes to dictionaries
+# Flatten your nodes if they are lists of dictionaries
+#nodes_flat = [item for sublist in nodes for item in sublist if isinstance(sublist, list) and isinstance(item, dict)]
+
+# Insert the nodes into the collection
+#collection.insert_many(nodes_flat)
+# Convert your nodes to dictionaries, skipping nodes without a __dict__ attribute
+
+'''
+nodes_dict = [vars(node) for node in nodes if hasattr(node, '__dict__')]
+
+# insert all
+collection.insert_many(nodes_dict)
+
+'''
+
+#mongo_index.add([node0, node1, node2, node3, node4, node5, node6, node7, node8, googleNode, apple_Node, microsoftNode, trunkToolsNode, mongodb_Node, nomic_Node, etsy_Node, americanExpress_Node, chase_Node])
+
+
+# add the node directly to the index
+index._add_nodes_to_index(nodes=node0,index_struct=index_struct)
+
+index._add_nodes_to_index(nodes=node1, index_struct=index_struct)
+
+index._add_nodes_to_index(nodes=node2, index_struct=index_struct)
+
+index._add_nodes_to_index(nodes=node3, index_struct=index_struct)
+
+index._add_nodes_to_index(nodes=node4, index_struct=index_struct)
+
+index._add_nodes_to_index(nodes=node5, index_struct=index_struct)
+
+index._add_nodes_to_index(nodes=node6, index_struct=index_struct)
+
+index._add_nodes_to_index(nodes=node7, index_struct=index_struct)
+
+index._add_nodes_to_index(nodes=node8, index_struct=index_struct)
+
+index._add_nodes_to_index(nodes=googleNode, index_struct=index_struct)
+
+index._add_nodes_to_index(nodes=apple_Node, index_struct=index_struct)
+
+index._add_nodes_to_index(nodes=microsoftNode, index_struct=index_struct)
+
+index._add_nodes_to_index(nodes=trunkToolsNode, index_struct=index_struct)
+
+index._add_nodes_to_index(nodes=mongodb_Node, index_struct=index_struct)
+
+index._add_nodes_to_index(nodes=nomic_Node, index_struct=index_struct, show_progress=True)
+
+index._add_nodes_to_index(nodes=etsy_Node, index_struct=index_struct, show_progress=True)
+
+index._add_nodes_to_index(nodes=americanExpress_Node, index_struct=index_struct)
+
+index._add_nodes_to_index(nodes=americanExpress_Node, index_struct=index_struct)
+
+index._add_nodes_to_index(nodes=chase_Node, index_struct=index_struct)
 # print a confirmation message to indicate that the data has been indexed
 print("Indexed Data")
 
@@ -78,11 +159,12 @@ print("Initial Vector Store Size:")
 print(store._collection.count_documents({}))  # output: 2070
 # get a ref_doc_id
 
-query="What courses has this individual taken so far? What is this particular individual's name?"
+query="What do you know about etsy from your vector index"
 response = index.as_query_engine().query(query)
 print("Prompt Query:", query)
 #print("successful connection")
 print(response)   # output: empty response
+
 
 
 '''
