@@ -1,5 +1,5 @@
 import streamlit as st
-import openai
+from gen_cover_letter import main 
 # from example_data import example_cv, example_job_description
 
 st.set_page_config(page_title="Home Page", page_icon=":lemon:", layout="centered")
@@ -18,6 +18,13 @@ with st.form("my_form"):
    resume = st.text_input('resume', '')
    github = st.text_input('github', '')
    
-   st.form_submit_button('Submit')
+   submit = st.form_submit_button('Submit')
+   
+   if submit:
+       with st.spinner('Generating cover letter...'):
+           text_output = main()
+           st.text_area(label='Cover Letter:',value=text_output)
+   
+
 
             
