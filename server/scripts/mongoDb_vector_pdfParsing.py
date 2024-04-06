@@ -13,6 +13,7 @@ from llama_index.embeddings.openai import OpenAIEmbedding
 from llama_index.core.embeddings import resolve_embed_model
 from llama_index.llms.ollama import Ollama
 from dotenv import load_dotenv
+from ReadLinks import nodes  # import the html nodes so we can read them
 import os
 
 
@@ -56,6 +57,7 @@ else:
 store = MongoDBAtlasVectorSearch(mongodb_client, db_name="test-database", collection_name="ayan_docs", index_name="default")
 storage_context = StorageContext.from_defaults(vector_store=store)
 ayan_docs = SimpleDirectoryReader("/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/Ayan/").load_data()
+
 
 # check the raw data that was loaded
 #print("Loaded Uber Docs:")
