@@ -55,15 +55,30 @@ else:
 # intialize a vector search object for the MongoDB atlas with the MongoDB client
 store = MongoDBAtlasVectorSearch(mongodb_client, db_name="test-database", collection_name="ayan_docs", index_name="default")
 storage_context = StorageContext.from_defaults(vector_store=store)
-ayan_docs = SimpleDirectoryReader("/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/Ayan/").load_data()
+# ayan_docs = SimpleDirectoryReader("/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/Ayan/").load_data()
+
+# Farnaz: Define the path to the documents subfolder of the server folder
+docs_path = os.path.join(os.path.dirname(os.getcwd()), 'documents')
+
+# Farnaz: Load the data from the documents subfolder
+docs = SimpleDirectoryReader(docs_path).load_data()
+
+# Farnaz: Print the number of documents loaded
+print(f"Loaded {len(docs)} documents from {docs_path}")
+
+# Farnaz: Index the data
+index = VectorStoreIndex.from_documents(docs, storage_context=storage_context)
+
+
+
 
 # check the raw data that was loaded
 #print("Loaded Uber Docs:")
 #print(uber_docs)  --> uncomment this if you want to see the raw data that was loaded
 
-index = VectorStoreIndex.from_documents(
-    ayan_docs, storage_context=storage_context
-)
+# index = VectorStoreIndex.from_documents(
+#     ayan_docs, storage_context=storage_context
+# )
 
 # print a confirmation message to indicate that the data has been indexed
 print("Indexed Data")
