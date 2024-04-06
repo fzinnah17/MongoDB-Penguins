@@ -5,3 +5,4 @@ mongodb/
 ayan-env
 mongodb-osx-x86_64-3.0.15/
 mongod.lock
+.DS_Store

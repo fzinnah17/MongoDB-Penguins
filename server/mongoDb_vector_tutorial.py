@@ -1,6 +1,6 @@
 # provide URI to constructor, or use environment variable
-from readline import redisplay
-from markdown import Markdown
+from readline import redisplay  # the display() function is most likely only available to jupyter notebook
+from markdown import Markdown   # TODO: There;s an issue with the import that needs fixing
 import pymongo
 from llama_index.vector_stores.mongodb import MongoDBAtlasVectorSearch
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
@@ -20,23 +20,31 @@ import os
 # load the environment variables
 load_dotenv()
 
+
+#TODO: instead of huggingface, try using OpenAI model isntead
 # Perform the relevant configuration to the default llama-index settings
+
 Settings.embed_model = HuggingFaceEmbedding(
     model_name="BAAI/bge-small-en-v1.5"
 )
 
+
 #ollama
-Settings.llm = Ollama(model="mistral", request_timeout=30.0)   
+#Settings.llm = Ollama(model="mistral", request_timeout=30.0)   
 
 mongo_uri = os.getenv("MONGO_URI")
-openai_key = os.getenv("OPENAI_API_KEY")
-print("Mongo URI: ", mongo_uri)
+#openai_key = os.getenv("OPENAI_API_KEY")
+
+#print("Mongo URI: ", mongo_uri)
 #print(mongo_uri)  # print it out to see if the mongo_uri is set correctly --> test passed
-print("Open AI:", openai_key)  # print it out to see if the openai_key is set correctly --> test passed
+#print("Open AI:", openai_key)  # print it out to see if the openai_key is set correctly --> test passed
 
 # create the mongodb client instance 
 # create a mongoDB client instance by passing the connection string
 mongodb_client = pymongo.MongoClient(mongo_uri)
+
+# embed_model = OpenAIEmbedding(embed_batch_size=10)  # note that since we changed the embedding model that we are working with, we will also need to adjust the index dimensionality
+#Settings.embed_model = embed_model
 
 # check if connection is successful or not
 if mongodb_client:
@@ -45,13 +53,8 @@ else:
     print("Connection to MongoDB Atlas Failed")
 
 # intialize a vector search object for the MongoDB atlas with the MongoDB client
-store = MongoDBAtlasVectorSearch(mongodb_client, db_name="test-database", collection_name="uber_docs")
-
-# create a storage context using default configurations, specifying the vector store to use, which in this case is the MongoDBAtlastVectorSearch vector store
+store = MongoDBAtlasVectorSearch(mongodb_client, db_name="test-database", collection_name="uber_docs", index_name="default")
 storage_context = StorageContext.from_defaults(vector_store=store)
-
-# read the uver docs within the data directory as part of context data we will ingest into the model using RAG technique
-# do note that for this to work properly, run the line : %pip install llama-index-vector-stores-mongodb --> otherwise, there will be errors
 uber_docs = SimpleDirectoryReader("/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/10k/").load_data()
 
 # check the raw data that was loaded
@@ -74,6 +77,7 @@ print(store._collection.count_documents({}))  # output: 2070
 # get a ref_doc_id
 
 response = index.as_query_engine().query("What was Uber's revenue?")
+print("successful connection")
 print(response)   # output: empty response
 
 
