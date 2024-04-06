@@ -22,8 +22,10 @@ with st.form("my_form"):
    
    if submit:
        with st.spinner('Generating cover letter...'):
-           text_output = main()
-           st.text_area(label='Cover Letter:',value=text_output)
+           download_button_html = main(jobDescription)
+           st.markdown(download_button_html, unsafe_allow_html=True)
+        #    text_output = main()
+        #    st.text_area(label='Cover Letter:',value=text_output)
    
 
 
