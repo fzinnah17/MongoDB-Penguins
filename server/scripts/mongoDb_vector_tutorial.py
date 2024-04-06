@@ -55,7 +55,7 @@ else:
 # intialize a vector search object for the MongoDB atlas with the MongoDB client
 store = MongoDBAtlasVectorSearch(mongodb_client, db_name="test-database", collection_name="uber_docs", index_name="default")
 storage_context = StorageContext.from_defaults(vector_store=store)
-uber_docs = SimpleDirectoryReader("/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/10k/").load_data()
+uber_docs = SimpleDirectoryReader("/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/Ayan/").load_data()
 
 # check the raw data that was loaded
 #print("Loaded Uber Docs:")
@@ -76,8 +76,10 @@ print("Initial Vector Store Size:")
 print(store._collection.count_documents({}))  # output: 2070
 # get a ref_doc_id
 
-response = index.as_query_engine().query("What was Uber's revenue?")
-print("successful connection")
+query="What courses has this individual taken so far? What is this particular individual's name?"
+response = index.as_query_engine().query(query)
+print("Prompt Query:", query)
+#print("successful connection")
 print(response)   # output: empty response
 
 
