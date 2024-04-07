@@ -15,6 +15,7 @@ from llama_index.llms.ollama import Ollama
 from dotenv import load_dotenv
 from ReadLinks import node0, node1, node2, node3, node4, node5, node6, node7, node8, googleNode, apple_Node, microsoftNode, trunkToolsNode, mongodb_Node, nomic_Node, etsy_Node, americanExpress_Node, chase_Node  # import the html nodes so we can read them
 import os
+import torch
 
 
 # this is based on the mongoDB vector database tutorial from the documentation ot get a better understanding of how vector datbases works
@@ -25,9 +26,9 @@ load_dotenv()
 #TODO: instead of huggingface, try using OpenAI model isntead
 # Perform the relevant configuration to the default llama-index settings
 
-Settings.embed_model = HuggingFaceEmbedding(
-    model_name="BAAI/bge-small-en-v1.5"
-)
+# loads BAAI/bge-small-en-v1.5
+embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
+Settings.embed_model=embed_model
 
 
 #ollama
@@ -159,7 +160,7 @@ print("Initial Vector Store Size:")
 print(store._collection.count_documents({}))  # output: 2070
 # get a ref_doc_id
 
-query="What do you know about etsy from your vector index"
+query="I want to apply for the following job at TrunkTools, provided below is the job description corresponding to it:\nFull Stack / Implementation Engineer (NYC or Remote US)LocationRemote - US Time Zone, New York City HQ Type Full time Department Engineering Overview Application\nAt Trunk Tools, we are tackling the massive $13 trillion+ construction industry. We’re an exceptional team of serial entrepreneurs, brought together by our shared mission: automating construction. Our founding team (SpaceX, Stanford, MIT, Carta, etc.) has successfully built and deployed software in construction for 140k+ users, millions of users beyond the construction space, and worked on +$2 billion of built-environment projects. We aren’t another out-of-touch tech startup, most of our team comes from construction. \nWe spent the last few years building the brain behind construction. Now we are deploying workflows/ agents, starting with Q&A document chatbot, to be ingrained in construction teams’ workflows, ultimately to automate construction. Given our immense traction with several Fortune 500 construction companies,  we are doubling our team in order to deploy several more agents this year. You will have an opportunity to drive the transformation of a multi-trillion-dollar industry full of waste, risks and inefficiencies.\nWhat you will do and achieve:\nBuild and iterate on existing features based on customer feedback in collaboration with our PM and implementation manager\nBuild new and expand existing system integrations with our products\nIterate on our backend to ensure it is scalable enough to support thousands of users\nEnsure our application is reliable and bug-free\nBuild functionality to remove friction from onboarding process for thousand+ new users\nPlay an active part in the conversations around product strategy and be willing to bring in novel ideas\nPerform routine site audits, as well as ongoing maintenance, on an as-needed basis.\nAct as a liaison between integrations team, implementation team, client stakeholders (IT) to assist in technical explanations and exploration.\nWho you are:\nProficiency in TypeScript\nExpertise in Backend development (Node + Express)\nExpertise in Frontend development (React)\nExperience in data schema modeling\nComfortable with relational and non-relational databases\nPrevious experience shipping products to users\nExcellent written and verbal communication skills\nStrong interpersonal skills and able to work in a team\nAbility to work independently and manage time efficiently\nSolution-oriented and high-level programming skills\nWhat we offer 😎\n🎖️ A close-knit and collaborative early-stage startup environment where every voice is heard and every opinion matters; currently we're 17 team members\n💰 Competitive salary and stock option equity packages\n🏥  3 Medical Plans to choose from including 100% covered option. Plus Dental and Vision Insurance!\n🤓 Learning & Growth stipend \n🏠 Flexible long-term work options (remote and hybrid)\n💰 401K \n🥨 Free lunch provided in the office in NYC - you’ll never go hungry with us! \n🛫 Unlimited PTO; We truly believe in work-life balance and that hard work should be balanced with time for rest and rejuvenation\n🏝 IRL / In-Person retreats throughout the year\n\n Based on the information provided in the job description, utilzie the information about trunk tools from the vector database, as well as the information regarding my resume and transcript to generate a cover letter"
 response = index.as_query_engine().query(query)
 print("Prompt Query:", query)
 #print("successful connection")

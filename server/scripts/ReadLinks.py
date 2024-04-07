@@ -73,11 +73,11 @@ print(result)
 parser = HTMLNodeParser()
 
 r0 = requests.get(url0)
-print("Status Code for Response 0:")
-print(r0.status_code)
+#print("Status Code for Response 0:")
+#print(r0.status_code)
 extracted_html0 = r0.content
-print("\nExtracted HTML content for Github Repository Homepage:")
-print(extracted_html0)
+#print("\nExtracted HTML content for Github Repository Homepage:")
+#print(extracted_html0)
 
 #save the resulting out
 with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/githubRepo-HomePage.html', 'wb+') as f:
@@ -86,17 +86,17 @@ with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/
 # make sure the filename for html matches what the html file was saved as
 html_content_github_repo_home = FlatReader().load_data(Path("../Data/html/githubRepo-HomePage.html"))
 node0 = parser.get_nodes_from_documents(html_content_github_repo_home)
-print("\n\nResulting Nodes:")
-print("\nNode 0 for Github Home Page Content:")
-print(node0)
+#print("\n\nResulting Nodes:")
+#print("\nNode 0 for Github Home Page Content:")
+#print(node0)
 
 
 r1 = requests.get(url1)
-print("\nStatus Code for Response 2:")
-print(r1.status_code)
+#print("\nStatus Code for Response 2:")
+#print(r1.status_code)
 extracted_html1 = r1.content
-print("\nExtracted HTML content for Github Repository Page 1:")
-print(extracted_html1)
+#print("\nExtracted HTML content for Github Repository Page 1:")
+#print(extracted_html1)
 
 # save the extracted html in an actual html file
 with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/githubRepo-Page1.html', 'wb+') as f:
@@ -104,16 +104,16 @@ with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/
 
 html_content_github_repo1 = FlatReader().load_data(Path("../Data/html/githubRepo-Page1.html"))
 node1 = parser.get_nodes_from_documents(html_content_github_repo1)
-print("\nNode 1 for Github Repository page 1:")
-print(node1)
+#print("\nNode 1 for Github Repository page 1:")
+#print(node1)
 
 # request 3
 r3 = requests.get(url2)
-print("\nStatus Code for Response 3:")
-print(r3.status_code)
+#print("\nStatus Code for Response 3:")
+#print(r3.status_code)
 extracted_html2 = r3.content
-print("\nExtracted HTML content for Github Repository Page 2:")
-print(extracted_html2)
+#print("\nExtracted HTML content for Github Repository Page 2:")
+#print(extracted_html2)
 
 # save the extracted html in an actual html file
 with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/githubRepo-Page2.html', 'wb+') as f:
@@ -121,16 +121,16 @@ with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/
 
 html_content_github_repo2 = FlatReader().load_data(Path("../Data/html/githubRepo-Page2.html"))
 node2 = parser.get_nodes_from_documents(html_content_github_repo2)
-print("\nNode 2 for Github Repository page 2:")
-print(node2)
+#print("\nNode 2 for Github Repository page 2:")
+#print(node2)
 
 # request 4
 r4 = requests.get(url3)
-print("\nStatus Code for Response 4:")
-print(r4.status_code)
+#print("\nStatus Code for Response 4:")
+#print(r4.status_code)
 extracted_html3 = r4.content
-print("\nExtracted HTML content for Github Repository Page 3:")
-print(extracted_html3)
+#print("\nExtracted HTML content for Github Repository Page 3:")
+#print(extracted_html3)
 
 # save the extracted html in an actual html file
 with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/githubRepo-Page3.html', 'wb+') as f:
@@ -138,16 +138,16 @@ with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/
 
 html_content_github_repo3 = FlatReader().load_data(Path("../Data/html/githubRepo-Page3.html"))
 node3 = parser.get_nodes_from_documents(html_content_github_repo2)
-print("\nNode 2 for Github Repository page 3:")
-print(node3)
+#print("\nNode 2 for Github Repository page 3:")
+#print(node3)
 
 # request 5
 r5 = requests.get(specific_repo1)
-print("\nStatus Code for Response 5:")
-print(r5.status_code)
+#print("\nStatus Code for Response 5:")
+#print(r5.status_code)
 extracted_html4 = r5.content
-print("\nSpecific Repo Content:")
-print(extracted_html4)
+#print("\nSpecific Repo Content:")
+#print(extracted_html4)
 
 # save the extracted html in an actual html file
 with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/specificRepo0.html', 'wb+') as f:
@@ -155,16 +155,16 @@ with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/
 
 html_content_github_repo4 = FlatReader().load_data(Path("../Data/html/specificRepo0.html"))
 node4 = parser.get_nodes_from_documents(html_content_github_repo4)
-print("\nNode 4 for Specific Repo:")
-print(node4)
+#print("\nNode 4 for Specific Repo:")
+#print(node4)
 
 # request 6
 r6 = requests.get(specific_repo2)
-print("\nStatus Code for Response 6:")
-print(r6.status_code)
+#print("\nStatus Code for Response 6:")
+#print(r6.status_code)
 extracted_html5 = r6.content
-print("\nSpecific Repo Content:")
-print(extracted_html5)
+#print("\nSpecific Repo Content:")
+#print(extracted_html5)
 
 # save the extracted html in an actual html file
 with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/specific-repo2.html', 'wb+') as f:
@@ -172,16 +172,16 @@ with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/
 
 html_content_github_repo5 = FlatReader().load_data(Path("../Data/html/specific-repo2.html"))
 node5 = parser.get_nodes_from_documents(html_content_github_repo5)
-print("\nNode 5 for Specific Repo 2:")
-print(node5)
+#print("\nNode 5 for Specific Repo 2:")
+#print(node5)
 
 # request 7
 r7 = requests.get(specific_repo3)
-print("\nStatus Code for Response 7:")
-print(r7.status_code)
+#print("\nStatus Code for Response 7:")
+#print(r7.status_code)
 extracted_html6 = r7.content
-print("\nSpecific Repo Content:")
-print(extracted_html6)
+#print("\nSpecific Repo Content:")
+#print(extracted_html6)
 
 # save the extracted html in an actual html file
 with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/specific-repo3.html', 'wb+') as f:
@@ -189,17 +189,17 @@ with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/
 
 html_content_github_repo6 = FlatReader().load_data(Path("../Data/html/specific-repo3.html"))
 node6 = parser.get_nodes_from_documents(html_content_github_repo5)
-print("\nNode 6 for Specific Repo:")
-print(node6)
+#print("\nNode 6 for Specific Repo:")
+#print(node6)
 
 
 # request 8
 r8 = requests.get(specific_repo4)
-print("\nStatus Code for Response 8:")
-print(r8.status_code)
+#print("\nStatus Code for Response 8:")
+#print(r8.status_code)
 extracted_html7 = r8.content
-print("\nSpecific Repo Content:")
-print(extracted_html7)
+#print("\nSpecific Repo Content:")
+#print(extracted_html7)
 
 # save the extracted html in an actual html file
 with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/specific-repo4.html', 'wb+') as f:
@@ -207,16 +207,16 @@ with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/
 
 html_content_github_repo7 = FlatReader().load_data(Path("../Data/html/specific-repo4.html"))
 node7 = parser.get_nodes_from_documents(html_content_github_repo7)
-print("\nNode 7 for Specific Repo:")
-print(node7)
+#print("\nNode 7 for Specific Repo:")
+#print(node7)
 
 # request 9
 r9 = requests.get(specific_repo5)
-print("\nStatus Code for Response 8:")
-print(r9.status_code)
+#print("\nStatus Code for Response 8:")
+#print(r9.status_code)
 extracted_html8 = r9.content
-print("\nSpecific Repo Content:")
-print(extracted_html8)
+#print("\nSpecific Repo Content:")
+#print(extracted_html8)
 
 # save the extracted html in an actual html file
 with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/specific-repo5.html', 'wb+') as f:
@@ -224,17 +224,17 @@ with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/
 
 html_content_github_repo8 = FlatReader().load_data(Path("../Data/html/specific-repo5.html"))
 node8 = parser.get_nodes_from_documents(html_content_github_repo8)
-print("\nNode 8 for Specific Repo:")
-print(node8)
+#print("\nNode 8 for Specific Repo:")
+#print(node8)
 
 
-print("The following are HTML extracted content for various companies:")
+#print("The following are HTML extracted content for various companies:")
 
 # The following are links to parse through the About me section for the companies
 googleRequest = requests.get(googleAboutUs)
-print(googleRequest.status_code)
+#print(googleRequest.status_code)
 google_html = googleRequest.content
-print(google_html)
+#print(google_html)
 
 #save the resulting out
 with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/googleAboutUs.html', 'wb+') as f:
@@ -243,15 +243,15 @@ with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/
 # make sure the filename for html matches what the html file was saved as
 google_html_extracted = FlatReader().load_data(Path("../Data/html/googleAboutUs.html"))
 googleNode = parser.get_nodes_from_documents(google_html_extracted)
-print("Google Node")
-print(googleNode)
+#print("Google Node")
+#print(googleNode)
 
 
 microsoftRequest = requests.get(microsoftAboutUs)
-print(microsoftRequest.status_code)
+#print(microsoftRequest.status_code)
 microsoft_html = microsoftRequest.content
-print("Extracted Microsoft HTML:")
-print(microsoft_html)
+#print("Extracted Microsoft HTML:")
+#print(microsoft_html)
 
 #save the resulting out
 with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/microsoftAboutUs.html', 'wb+') as f:
@@ -260,16 +260,16 @@ with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/
 # make sure the filename for html matches what the html file was saved as
 microsoft_html_extracted = FlatReader().load_data(Path("../Data/html/microsoftAboutUs.html"))
 microsoftNode = parser.get_nodes_from_documents(microsoft_html_extracted)
-print("\n\nResulting Microsoft Nodes:")
-print(microsoftNode)
+#print("\n\nResulting Microsoft Nodes:")
+#print(microsoftNode)
 
 
 
 trunkToolsRequest = requests.get(trunkToolsAboutUs)
-print(trunkToolsRequest.status_code)
+#print(trunkToolsRequest.status_code)
 trunkTools_html = trunkToolsRequest.content
-print("Extracted TrunkTools HTML:")
-print(trunkTools_html)
+#print("Extracted TrunkTools HTML:")
+#print(trunkTools_html)
 
 #save the resulting out
 with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/trunkToolsAboutUs.html', 'wb+') as f:
@@ -278,16 +278,16 @@ with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/
 # make sure the filename for html matches what the html file was saved as
 trunkTools_html_extracted = FlatReader().load_data(Path("../Data/html/trunkToolsAboutUs.html"))
 trunkToolsNode = parser.get_nodes_from_documents(trunkTools_html_extracted)
-print("\n\nResulting Trunk Tools Nodes:")
-print(trunkToolsNode)
+#print("\n\nResulting Trunk Tools Nodes:")
+#print(trunkToolsNode)
 
 
 
 mongodbRequest = requests.get(trunkToolsAboutUs)
-print(mongodbRequest.status_code)
+#print(mongodbRequest.status_code)
 mongodbRequest_html = mongodbRequest.content
-print("Extracted mongoDB HTML:")
-print(mongodbRequest_html)
+#print("Extracted mongoDB HTML:")
+#print(mongodbRequest_html)
 
 #save the resulting out
 with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/mongodbAboutUs.html', 'wb+') as f:
@@ -296,15 +296,15 @@ with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/
 # make sure the filename for html matches what the html file was saved as
 mongodb_html_extracted = FlatReader().load_data(Path("../Data/html/mongodbAboutUs.html"))
 mongodb_Node = parser.get_nodes_from_documents(mongodb_html_extracted)
-print("\n\nResulting Mongo DB Nodes:")
-print(mongodb_Node)
+#print("\n\nResulting Mongo DB Nodes:")
+#print(mongodb_Node)
 
 
 nomicRequest = requests.get(nomicAboutUs)
-print(nomicRequest.status_code)
+#print(nomicRequest.status_code)
 nomic_Request_html = nomicRequest.content
-print("Extracted Nomic HTML:")
-print(nomic_Request_html)
+#print("Extracted Nomic HTML:")
+#print(nomic_Request_html)
 
 #save the resulting out
 with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/nomicAboutUs.html', 'wb+') as f:
@@ -313,16 +313,16 @@ with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/
 # make sure the filename for html matches what the html file was saved as
 nomic_html_extracted = FlatReader().load_data(Path("../Data/html/nomicAboutUs.html"))
 nomic_Node = parser.get_nodes_from_documents(nomic_html_extracted)
-print("\n\nResulting Trunk Tools Nodes:")
-print(nomic_Node)
+#print("\n\nResulting Trunk Tools Nodes:")
+#print(nomic_Node)
 
 
 
 etsyRequest = requests.get(etsyAboutUs)
-print(etsyRequest.status_code)
+#print(etsyRequest.status_code)
 etsy_Request_html = etsyRequest.content
-print("Extracted Etsy HTML:")
-print(etsy_Request_html)
+#print("Extracted Etsy HTML:")
+#print(etsy_Request_html)
 
 #save the resulting out
 with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/etsyAboutUs.html', 'wb+') as f:
@@ -331,53 +331,53 @@ with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/
 # make sure the filename for html matches what the html file was saved as
 etsy_html_extracted = FlatReader().load_data(Path("../Data/html/etsyAboutUs.html"))
 etsy_Node = parser.get_nodes_from_documents(etsy_html_extracted)
-print("\n\nResulting Etsy Nodes:")
-print(etsy_Node)
+#print("\n\nResulting Etsy Nodes:")
+#print(etsy_Node)
 
 
 appleRequest = requests.get(appleAboutUs)
-print(appleRequest)
+#print(appleRequest)
 apple_request_html = appleRequest.content
-print("Extracted Apple HTML:")
-print(apple_request_html)
+#print("Extracted Apple HTML:")
+#print(apple_request_html)
 
 with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/appleAboutUs.html', 'wb+') as f:
     f.write(appleRequest.content)
 
 apple_html_extracted = FlatReader().load_data(Path("../Data/html/appleAboutUs.html"))
 apple_Node = parser.get_nodes_from_documents(apple_html_extracted)
-print("\n\nResulting Apple Nodes:")
-print(apple_Node)
+#print("\n\nResulting Apple Nodes:")
+#print(apple_Node)
 
 
 
 americanExpressRequest = requests.get(americanExpressAboutUs)
-print(americanExpressRequest)
+#print(americanExpressRequest)
 americanExpress_request_html = americanExpressRequest.content
-print("Extracted American HTML:")
-print(americanExpress_request_html)
+#print("Extracted American HTML:")
+#print(americanExpress_request_html)
 
 with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/americanExpressAboutUs.html', 'wb+') as f:
     f.write(americanExpressRequest.content)
 
 americanExpress_html_extracted = FlatReader().load_data(Path("../Data/html/americanExpressAboutUs.html"))
 americanExpress_Node = parser.get_nodes_from_documents(americanExpress_html_extracted)
-print("\n\nResulting American Express Nodes:")
-print(americanExpress_Node)
+#print("\n\nResulting American Express Nodes:")
+#print(americanExpress_Node)
 
 chaseRequest = requests.get(chaseAboutUs)
-print(chaseRequest)
+#print(chaseRequest)
 chase_request_html = chaseRequest.content
-print("Extracted Chase HTML:")
-print(chase_request_html)
+#print("Extracted Chase HTML:")
+#print(chase_request_html)
 
 with open('/Users/ayandas/Desktop/VS_Code_Projects/mongodb-testrepo/server/Data/html/chaseAboutUs.html', 'wb+') as f:
     f.write(americanExpressRequest.content)
 
 chase_html_extracted = FlatReader().load_data(Path("../Data/html/chaseAboutUs.html"))
 chase_Node = parser.get_nodes_from_documents(chase_html_extracted)
-print("\n\nResulting Chase Nodes:")
-print(chase_Node)
+#print("\n\nResulting Chase Nodes:")
+#print(chase_Node)
 
 
 
