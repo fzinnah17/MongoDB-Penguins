@@ -111,7 +111,7 @@ collection.insert_many(nodes_dict)
 #mongo_index.add([node0, node1, node2, node3, node4, node5, node6, node7, node8, googleNode, apple_Node, microsoftNode, trunkToolsNode, mongodb_Node, nomic_Node, etsy_Node, americanExpress_Node, chase_Node])
 
 
-# add the node directly to the index
+# add the node directly to the index, individually, with the struck being empty
 index._add_nodes_to_index(nodes=node0,index_struct=index_struct)
 
 index._add_nodes_to_index(nodes=node1, index_struct=index_struct)
