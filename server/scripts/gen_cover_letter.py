@@ -1,34 +1,46 @@
 
 import os
 
+from dotenv import load_dotenv
+#from openai import OpenAI
 import pymongo
 from llama_index.core.settings import Settings
 from llama_index.core import VectorStoreIndex
 from llama_index.llms.anthropic import Anthropic
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+from llama_index.llms.openai import OpenAI
 from llama_index.vector_stores.mongodb import MongoDBAtlasVectorSearch
 from llama_index.core.retrievers import VectorIndexRetriever
 from llama_index.core import VectorStoreIndex, get_response_synthesizer
 from llama_index.core.retrievers import VectorIndexRetriever
 from llama_index.core.query_engine import RetrieverQueryEngine
+from llama_index.llms.replicate import Replicate
 from llama_index.core.postprocessor import LLMRerank
+from transformers import AutoTokenizer, AutoModelForCausalLM
 from fpdf import FPDF
 import base64
 import certifi
 
 from cover_letter_prompt import COVER_LETTER_PROMPT_TEMPLATE
 
+load_dotenv()
+
 def hardcode_env_vars():
-    os.environ["ANTHROPIC_API_KEY"] = "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"
+    #os.environ["ANTHROPIC_API_KEY"] = "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"
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
-    os.environ["MONGO_URI"] = "mongodb+srv://adas006:ayan@embeddingsdata.7urn3ch.mongodb.net/?retryWrites=true&w=majority&appName=EmbeddingsData"
+    #os.environ["MONGO_URI"] = "mongodb+srv://adas006:ayan@embeddingsdata.7urn3ch.mongodb.net/?retryWrites=true&w=majority&appName=EmbeddingsData"
 
 def initialize_global_settings():
     # os.environ["ANTHROPIC_API_KEY"] = "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"
-    Settings.llm = Anthropic(
-        # model="claude-3-haiku-20240307"
-        model="claude-3-opus-20240229"
-    )
+    #model = AutoModelForCausalLM.from_pretrained("davidkim205/Rhea-72b-v0.5")  # a huggingface model
+    model = OpenAI(model="gpt-4", max_tokens=3000, api_version=os.environ["OPENAI_API_KEY"])
+    Settings.llm = model
+    '''
+    Replicate(
+        model="meta/llama-2-70b-chat:2796ee9483c3fd7aa2e171d38f4ca12251a30609463dcfd4cd76703f22e96cdf",
+        is_chat_model=True,
+        additional_kwargs={"max_new_tokens": 1024}
+)  '''
     Settings.embed_model = HuggingFaceEmbedding(
         model_name="BAAI/bge-small-en-v1.5"
     )
@@ -49,7 +61,7 @@ def main(
 
     # Connect to database
     mongodb_client = pymongo.MongoClient(
-        os.getenv("MONGO_URI"), tlsCAFile=certifi.where()
+        os.environ["MONGO_URI"], tlsCAFile=certifi.where()
     )
     mongo_vector_store = MongoDBAtlasVectorSearch(
         mongodb_client,
